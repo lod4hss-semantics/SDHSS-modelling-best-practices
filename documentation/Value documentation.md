@@ -13,20 +13,17 @@ Dates are defined in the Julian calendar until Thursday 4 October 1582 and conti
 
 ### Full paths for documenting dates
 
-Temporal Location
+While most of cases can be handled with the shortcut `crm-sup:C39 Standard Date-Time`, the documentation of time in specific domains, such as date in a different calendar or other reference systems (for exampple in Ancient Egypt), requires a more complex model.
 
-time:TemporalPosition
+A central entity, labelled `sdh-xx:CX Temporal Position`, as subclass of `sdh:C5 Abstract Region`, documents the position in an abstract and conceptual space of time defined by a conventionally defined reference system. This class is equivalent to `time:TemporalPosition` in the time ontology.
 
--> Similar to Dimension
+This reference system is documented with the class `sdh-xx:CX Temporal Reference System`, as subclass of `sdh:C40 Intentional Set` (?), that specifies the Reference System or Calendar. This class is equivalent to `time:GeneralDateTimeDescription`?
 
-subclass of sdh:C5 Abstract Region.
+The class `sdh-xx:CX Temporal Position` would then be linked to a Time Primitive with a property `sdh-xx:PX has date`.
 
-Properties:
-has date
-has calendar
-has temporal reference system (?)
-
-A Class to describe the calendar? Similar to time:GeneralDateTimeDescription
+Questions:
+- Is `time:GeneralDateTimeDescription` realy equivalent to `sdh-xx:CX Temporal Reference System`?
+- Should the Temporal Position be a Time Span? Or rather a single point in time, and the properties sdh-short P3 begins after, P4 begins on, etc. should still be used to link a Temporal Entity with a Temporal Position?
 
 ## Geo-coordinates
 
@@ -61,6 +58,10 @@ The instance of the class `crm:E53:Place` can then be associated to a coordinate
 Questions:
 - How to express the WKT standard? Should the place have a Type "Point", "LineString", "Polygon", etc., or the type expressed in the space primitive directly, such as `point (x.xx y.xx)`, `linestring (x.xx y.xx, x.xx y.xx, x.xx y.xx)`.
 
+### How it's done in WissKI
+
+How Geographical data is managed in WissKI?
+
 ## Weights and measures
 
 Measures
@@ -73,12 +74,17 @@ This is still to define
 
 ## URIs, External Identifiers and URLs
 
-Shortcuts
+`owl:sameAs`
+`crm-sup:P20 same as external identifier`
 
-has external identifier
+Should we have another shortcut from any entity (domain `crm:E1 CRM Entity`), to a URL? such as `sdh-short:PX has web page`
+
+The longer path is having the webpage documented as an instance of `lrmoo:F2 Expression` (? another class? create a new class equivalent to `geov:C4 Web Request`?). This webpage would be about the entity, and the webpage available at a specific address.
 
 ## Appellation and labels
 
-Shortcuts
+Shortcuts:
+`sdh-short:P9 has standard label`
+`sdh-short:P10 has alternative label`
 
-Appellation in a Language seulement si la langue est nécessaire
+The longer path is with `sdh:C11 Appellation in a Language`. Do we need anything else with the Appellation in a Language profile?
